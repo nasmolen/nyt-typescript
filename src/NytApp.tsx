@@ -1,5 +1,7 @@
 import React from 'react';
 import NytResults from './NytResults';
+// import {SyntheticEvent} from 'react';
+
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = 'vACwDsKN3DaroSuqw0IQct3C8UzFXwdN';
 
@@ -45,14 +47,14 @@ class NytApp extends React.Component<{}, NytState> {
    this.fetchResults();
  };
 
- changePageNumber(event: MouseEvent | KeyboardEvent, direction: string) {
-   event.preventDefault();
+ changePageNumber(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, direction: string) {
+   e.preventDefault();
    if(direction === 'down') {
      if(this.state.pageNumber > 0) {
        this.setState({
          pageNumber: this.state.pageNumber + 1
        });
-       this.fetchResults;
+       this.fetchResults();
        }
      }
 
@@ -60,7 +62,7 @@ class NytApp extends React.Component<{}, NytState> {
     this.setState({
       pageNumber: this.state.pageNumber + 1
     });
-    this.fetchResults;
+    this.fetchResults();
     }
   };
 
